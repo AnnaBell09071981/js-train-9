@@ -361,7 +361,7 @@ function expandArrayByN(arr, n) {
    if(!Array.isArray(arr)) {
     return "Перший вхідний параметр має бути масивом, другий - числом";
   }
-  const expandedArray = arr.flatMap((index) => index * n ? arr : null);
+    const expandedArray = arr.flatMap((num) => Array(n).fill(num));
   return expandedArray;
   // Перевіряємо, чи вхідні параметри є масивом та числом відповідно, якщо ні повертаємо 'Перший вхідний параметр має бути масивом, другий - числом'
   // Використовуємо метод flatMap для створення нового масиву, де кожне число повторюється n разів
@@ -384,8 +384,20 @@ function findLongestWord(arr) {
   if(!Array.isArray(arr)) {
     return toString();
   }
-  const initialValue = toString(arr[0]);
-  const longestWord = arr.reduce((accumulator, currentValue, currentIndex, array) => toString(currentValue[currentIndex]) === initialValue);
+  let wordLength = 0;
+  let longestW;
+  for (let i = 0; i < arr.length; i += 1) {
+    wordLength = arr[1].length;
+
+    if (arr[i].length > wordLength) {
+      longestW = arr[i];
+
+      // return longestW;
+    }
+
+  }
+  const initialValue = 0;
+  const longestWord = arr.reduce((accumulator, currentValue) => accumulator.length <= currentValue.length, initialValue);
   return longestWord;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий рядок
   // Використовуємо метод reduce() для знаходження найдовшого слова
@@ -409,7 +421,8 @@ function findDuplicateElements(arr) {
    if(!Array.isArray(arr)) {
     return [];
   }
-  const duplicateElements = arr.filter((num) => num === num);
+  
+  const duplicateElements = arr.filter((num) => num)
   return duplicateElements;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий масив
   // Використовуємо метод filter() для вибірки лише дубльованих елементів
