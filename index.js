@@ -421,9 +421,18 @@ function findDuplicateElements(arr) {
    if(!Array.isArray(arr)) {
     return [];
   }
+  let duplicateElements = 0;
+  let arr2 = [];
+  let arr1 = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[0] !== arr[i] && arr[i] === arr[i]) {
+        arr2 = arr[i];
+         duplicateElements = arr2;
+        } 
+        }
+      duplicateElements = arr.filter((arr2) => arr === arr2);
+      return duplicateElements;
   
-  const duplicateElements = arr.filter((num) => num)
-  return duplicateElements;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий масив
   // Використовуємо метод filter() для вибірки лише дубльованих елементів
   // Перевіряємо, чи є індекс поточного елемента відмінним від індексу першого входження елемента, та повертаємо результат
