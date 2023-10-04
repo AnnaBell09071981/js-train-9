@@ -382,23 +382,15 @@ console.log(expandArrayByN([1, 2, 3], 3)); // Виведе [1, 1, 1, 2, 2, 2, 3,
   */
 function findLongestWord(arr) {
   if(!Array.isArray(arr)) {
-    return toString();
+    return "";
   }
-  let wordLength = 0;
-  let longestW;
-  for (let i = 0; i < arr.length; i += 1) {
-    wordLength = arr[1].length;
-
-    if (arr[i].length > wordLength) {
-      longestW = arr[i];
-
-      // return longestW;
-    }
-
+  const longestWord = arr.reduce((longest, word) => {
+  if (word.length > longest.length) {
+    return word;
   }
-  const initialValue = 0;
-  const longestWord = arr.reduce((accumulator, currentValue) => accumulator.length <= currentValue.length, initialValue);
-  return longestWord;
+  return longest;
+}, "");
+return longestWord;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий рядок
   // Використовуємо метод reduce() для знаходження найдовшого слова
   // Порівнюємо довжину поточного слова з довжиною найдовшого слова
@@ -421,18 +413,10 @@ function findDuplicateElements(arr) {
    if(!Array.isArray(arr)) {
     return [];
   }
-  let duplicateElements = 0;
-  let arr2 = [];
-  let arr1 = arr[0];
-  for (let i = 0; i < arr.length; i++) {
-    if(arr[0] !== arr[i] && arr[i] === arr[i]) {
-        arr2 = arr[i];
-         duplicateElements = arr2;
-        } 
-        }
-      duplicateElements = arr.filter((arr2) => arr === arr2);
-      return duplicateElements;
-  
+   const duplicateElements = arr.filter((num, index) => {
+    return arr.indexOf(num) !== index;
+  });
+  return duplicateElements;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий масив
   // Використовуємо метод filter() для вибірки лише дубльованих елементів
   // Перевіряємо, чи є індекс поточного елемента відмінним від індексу першого входження елемента, та повертаємо результат
